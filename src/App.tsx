@@ -10,7 +10,6 @@ import {fetchAuthSession} from 'aws-amplify/auth'
 import outputs from "../amplify_outputs.json"
 
 function App() {
-  const [count, setCount] = useState(0)
   const [text, setText] = useState('')
 
   async function invokeHelloWorld() {
@@ -35,6 +34,10 @@ function App() {
         {({signOut, user}) => (
             <>
               <div>
+                <a href="https://docs.amplify.aws" target="_blank">
+                  <img src="https://docs.amplify.aws/assets/icon/favicon-purple-96x96.png" className="logo amplify"
+                       alt="Amplify logo"/>
+                </a>
                 <a href="https://vitejs.dev" target="_blank">
                   <img src={viteLogo} className="logo" alt="Vite logo"/>
                 </a>
@@ -42,17 +45,11 @@ function App() {
                   <img src={reactLogo} className="logo react" alt="React logo"/>
                 </a>
               </div>
-              <h1>Vite + React</h1>
-              <div className="card">
-                <button onClick={() => setCount((count) => count + 1)}>
-                  count is {count}
-                </button>
-                <p>
-                  Edit <code>src/App.tsx</code> and save to test HMR
-                </p>
-              </div>
-              <p className="read-the-docs">
-                Click on the Vite and React logos to learn more
+              <h1>Amplify + Vite + React</h1>
+              <p>
+                Hello, {user?.signInDetails?.loginId}
+                <br/>
+                <button onClick={signOut}>Sign Out</button>
               </p>
               <p>
                 <button onClick={invokeHelloWorld}>invokeHelloWorld</button>
